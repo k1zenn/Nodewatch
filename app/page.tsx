@@ -8,6 +8,7 @@ type DropletStatus = {
   status: string;
   uptime: string;
   region: string;
+  distro: string;
   ip: string;
   memoryMb: number | null;
   vcpus: number | null;
@@ -97,6 +98,7 @@ export default function Home() {
                   Status: {droplet.status === "active" ? "🟢 Active" : `🔴 ${droplet.status}`}
                 </p>
                 <p className="text-zinc-300">Uptime: {droplet.uptime}</p>
+                <p className="text-zinc-300">Distro: {droplet.distro}</p>
                 <p className="text-zinc-400 text-sm mt-2">{droplet.region}</p>
               </>
             ) : (

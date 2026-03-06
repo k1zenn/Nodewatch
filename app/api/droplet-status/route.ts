@@ -6,6 +6,7 @@ type DoDroplet = {
   status: string;
   created_at: string;
   region?: { slug?: string; name?: string };
+  image?: { distribution?: string; name?: string };
   memory?: number;
   vcpus?: number;
   disk?: number;
@@ -91,6 +92,7 @@ export async function GET() {
       status: droplet.status,
       uptime: formatUptime(droplet.created_at),
       region: droplet.region?.name ?? droplet.region?.slug ?? "N/A",
+      distro: droplet.image?.distribution ?? droplet.image?.name ?? "N/A",
       ip: publicIp,
       memoryMb: droplet.memory ?? null,
       vcpus: droplet.vcpus ?? null,
