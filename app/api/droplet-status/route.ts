@@ -35,10 +35,7 @@ export async function GET() {
   const targetName = process.env.DIGITALOCEAN_DROPLET_NAME;
 
   if (!token) {
-    return NextResponse.json(
-      { error: "DIGITALOCEAN_TOKEN is not set on server" },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
   }
 
   try {
@@ -50,10 +47,7 @@ export async function GET() {
     });
 
     if (!response.ok) {
-      return NextResponse.json(
-        { error: `DigitalOcean API error: ${response.status}` },
-        { status: response.status },
-      );
+      return NextResponse.json({ error: "Failed to fetch provider status" }, { status: 502 });
     }
 
     const data = (await response.json()) as DoListResponse;

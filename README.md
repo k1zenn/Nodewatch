@@ -29,6 +29,15 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Security notes
+
+- Keep DigitalOcean credentials in server env vars only.
+- Do **not** use `NEXT_PUBLIC_` for tokens/secrets.
+- Do not hardcode fallback API keys in frontend files.
+- This project intentionally returns only non-sensitive droplet fields from `/api/droplet-status`.
+
+Env vars are documented in `.env.example`.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
